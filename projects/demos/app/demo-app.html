@@ -1,0 +1,49 @@
+<nav
+  class="navbar navbar-expand-lg navbar-light bg-light fixed-top"
+  [class.navbar-dark]="activeDemo?.darkTheme"
+  [class.bg-dark]="activeDemo?.darkTheme"
+  role="navigation"
+>
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Angular 15.0+ kalendar</a>
+    
+     </div>
+</nav>
+
+<ng-template #loading>
+  <div class="card" >
+    <div class="card-body text-center">
+      <i class="fas fa-spin fa-spinner fa-5x"></i> <br />
+      Loading demo...
+    </div>
+  </div>
+</ng-template>
+
+<div class="container-fluid main-content">
+  <div class="row fill-height">
+    <div
+      class="col fill-height scroll-y demo-container"
+      mwlDraggableScrollContainer
+    >
+    
+      <div class="card" *ngIf="firstDemoLoaded; else loading" >
+        
+        <div class="card-body">
+          
+          <ul ngbNav #nav="ngbNav" class="justify-content-start ">
+            <li ngbNavItem domId="demo"> 
+              
+              <ng-template ngbNavContent>
+                <div class="spacer-top"><router-outlet></router-outlet></div>
+              </ng-template>
+            </li>
+ 
+          </ul>
+          <div [ngbNavOutlet]="nav"></div>
+        </div>
+        
+      </div>
+    </div>
+    
+  </div>
+</div>
